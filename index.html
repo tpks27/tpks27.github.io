@@ -37,6 +37,33 @@
         </ul>
     </section>
 
+    <section id="github-repos">
+    <h2>My GitHub Repositories</h2>
+    <div id="repo-list"></div>
+    </section>
+
+    <script>
+        fetch('https://api.github.com/users/tpks27/repos')
+            .then(response => response.json())
+            .then(repos => {
+                let repoList = document.getElementById('repo-list');
+                // Sort repos by 'created_at' date (latest first)
+                repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            
+                repos.forEach(repo => {
+                    let repoItem = document.createElement('div');
+                    repoItem.classList.add('repo-item');
+                    repoItem.innerHTML = `
+                        <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+                        <p>${repo.description || 'No description available'}</p>
+                        <p><strong>Languages:</strong> ${repo.language || 'N/A'}</p>
+                    `;
+                    repoList.appendChild(repoItem);
+                });
+            })
+            .catch(error => console.log('Error fetching repos:', error));
+    </script>
+
     <section id="contact">
         <h2>Get In Touch</h2>
         <p>Feel free to reach out to me via <a href="mailto:prabha.tekumudi@gmail.com">email</a> or connect with me on <a href="https://www.linkedin.com/in/prabha-t-737576162" target="_blank">LinkedIn</a>.</p>
