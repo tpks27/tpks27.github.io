@@ -9,9 +9,14 @@ body {
     padding: 0;
 }
 
-h1, h2 {
-    color: #FFFFFF;  /* Green Color for headings */
+h1 {
+    color: #FFFFFF;  /* white Color for heading */
 }
+
+h2 {
+    color: #4CAF50; /* Green Color for headings */
+}
+
 
 /* Header Styles */
 header {
