@@ -55,8 +55,6 @@
                     repoItem.classList.add('repo-item');
                     repoItem.innerHTML = `
                         <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
-                        <p>${repo.description || 'No description available'}</p>
-                        <p><strong>Languages:</strong> ${repo.language || 'N/A'}</p>
                     `;
                     repoList.appendChild(repoItem);
                 });
